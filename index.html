@@ -19,8 +19,15 @@
             <button class="stop-button">Stop</button>
           </div>
         </div>
-        <div class="level">
-          <button type="button" class="level-button">Level</button>
+
+        <!-- Level Difficulty Button -->
+        <div class="container mt-3">
+          <div class="container mt-3">
+            <button type="button" class="btn-level" data-bs-toggle="modal" data-bs-target="#myModal">
+              Levels
+            </button>
+          </div>
+        
           <div class="checkbtn">
             <button class="validate">Validate</button>
             <button class="validate">New</button>
@@ -32,7 +39,6 @@
     <main>
         <div id="tableGame"></div>
     </main>
-
 
     <!-- Modal For Validate Sudoku -->
     <div class="modal fade" id="checkSudoku" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -50,6 +56,31 @@
           </div>
         </div>
       </div>
+    </div>
+
+      <!-- The Modal -->
+      <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Difficulty Levels</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body text-center">
+              <div class="col-md-12">
+                <button type="button" class="btn btn-danger" id="btn-easy" data-bs-dismiss="modal">Easy</button>
+                <button type="button" class="btn btn-danger" id="btn-medium" data-bs-dismiss="modal">Medium</button>
+                <button type="button" class="btn btn-danger" id="btn-hard" data-bs-dismiss="modal">Hard</button>
+              </div>
+
+            </div>
+          </div> <!-- End of modal-content -->
+
+        </div>
     </div>
 
     <!-- SCRIPTS JS and JQUERY -->

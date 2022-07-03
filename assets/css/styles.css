@@ -2,6 +2,18 @@
 #seconds,#tens,.wrapper>p{
     font-size: 70px;
 }
+#btn-easy{
+    background-color: #02b875;
+}
+#btn-medium{
+    background-color: #fdce2a;
+}
+#btn-hard{
+    background-color: orangered;
+}
+#btn-easy,#btn-medium,#btn-hard{
+    border: 1px solid #e7d7be;
+}
 .wrapper{
     display: flex;
     flex-direction: column;
@@ -39,22 +51,17 @@
 .stop-button:hover{
     background-color:rgb(255, 115, 0);
 }
-.level-button{
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.btn-level{
     padding: 8% 15%;
     font-size: 30px;
     font-weight: bold;
     border-radius: 50%;
     border: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.level{
-    width: 100%;
-    padding-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 .checkbtn{
     width: 100%;
@@ -68,6 +75,7 @@
     background-color:antiquewhite;
 }
 .validate:hover,.reset:hover{
+    font-weight: bold;
     background-color: wheat;
 }
 .start-button,.stop-button,.validate,.reset{
