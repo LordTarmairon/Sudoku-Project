@@ -1,3 +1,130 @@
+body {
+    margin: 10%;
+    padding: 10%;
+    background-color: antiquewhite;
+    color: white;
+  }
+  main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  div {
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  p {
+  text-align: center;
+  font-size: 60px;
+  margin-top: 0px;
+}
+  .square {
+    width: 100%;
+    height: 100%;
+    font-size: 100%;
+    text-align: center;
+  }
+  .big_square{
+    box-shadow: 10px 10px #66758f;
+  }
+  .mid_square {
+    position: relative;
+    float: left;
+    width: 33.3%;
+    padding-bottom: 33.3%;
+    border: 2px solid #64ffda;
+    background-color: #233554;
+  }
+  .small_square {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 90%;
+    height: 90%;
+    background-color: #819efa;
+    margin: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .inner-grid {
+    width: 33.3%;
+    height: 33.3%;
+    border: 1px solid #495670;
+    display: table;
+  }
+  .inner-square {
+    width: 33.3%;
+    line-height: 100%;
+    font-size: 50px;
+    font-weight: bold;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  .wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+.restbtns{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}  
+.checkbtn{
+    display: flex;
+    align-items: center;
+    
+}
+  /* Style the sidenav links and the dropdown button */
+  .sidenav a, .dropdown-btn {
+    padding: 6px 20px 6px 20px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    border: none;
+    background: none;
+    width:100%;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  /* On mouse-over */
+  .sidenav a:hover, .dropdown-btn:hover {
+    color: #f1f1f1;
+  }
+  
+  
+  /* Add an active class to the active dropdown button */
+  .active {
+    background-color: green;
+    color: white;
+  }
+  
+  /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+  .dropdown-container {
+    width: 100%;
+    display: none;
+    background-color: #262626;
+    text-align: center;
+  }
+
 .outsideDiv {
     padding: 1%;
     width: 85vh;
