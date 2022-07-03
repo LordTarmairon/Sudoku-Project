@@ -1,0 +1,22 @@
+.outsideDiv {
+    padding: 1%;
+    width: 85vh;
+    height: 85vh;
+    background-color: burlywood;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.squareBox {
+    width: 28vh;
+    height: 28vh;
+    /* border: 2px solid red; */
+}
+
+.inputBox {
+    width: 8vh;
+    height: 8vh;
+}
