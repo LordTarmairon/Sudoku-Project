@@ -1,44 +1,33 @@
-var dropdown = document.getElementsByClassName("dropdown-btn");
-var i;
-
-for (i = 0; i < dropdown.length; i++) {
-  dropdown[i].addEventListener("click", function () {
-    this.classList.toggle("active");
-    var dropdownContent = this.nextElementSibling;
-    if (dropdownContent.style.display === "block") {
-      dropdownContent.style.display = "none";
-    } else {
-      dropdownContent.style.display = "block";
-    }
-  });
-}
 //timer
 window.onload = function () {
-  var seconds = 00;
-  var tens = 00;
-  var appendTens = document.getElementById("tens");
-  var appendSeconds = document.getElementById("seconds");
-  var buttonStart = document.getElementById("button-start");
-  var buttonStop = document.getElementById("button-stop");
-  var buttonReset = document.getElementById("button-reset");
-  var Interval;
+    var minutes = 0;
+    var seconds = 0;
+    var tens = 0;
+    var appendTens = document.getElementById("tens");
+    var appendSeconds = document.getElementById("seconds");
+    var appendMinutes = document.getElementById("minutes");
+    var buttonStart = document.getElementById("button-start");
+    var buttonStop = document.getElementById("button-stop");
+    var buttonReset = document.getElementById("button-reset");
+    var Interval;
 
   buttonStart.onclick = function () {
     clearInterval(Interval);
     Interval = setInterval(startTimer, 10);
-  };
+  }
 
   buttonStop.onclick = function () {
     clearInterval(Interval);
-  };
+  }
 
   buttonReset.onclick = function () {
     clearInterval(Interval);
     tens = "00";
     seconds = "00";
+    minutes = "00";
     appendTens.innerHTML = tens;
     appendSeconds.innerHTML = seconds;
-  };
+  }
 
   function startTimer() {
     tens++;
@@ -62,8 +51,19 @@ window.onload = function () {
     if (seconds > 9) {
       appendSeconds.innerHTML = seconds;
     }
+
+    if(seconds > 59){
+        console.log("minutes");
+        minutes++;
+        appendMinutes.innerHTML = "0" + minutes;
+        seconds = 0;
+        appendSeconds.innerHTML = "0" + 0;
+    }
+    if (minutes > 9) {
+      appendSeconds.innerHTML = minutes;
+    }
   }
-};
+}
 
 const inputArray = [];
     function createBox() {
@@ -71,10 +71,10 @@ const inputArray = [];
             let squareDiv = $("<div class=squareBox></div>");
             squareDiv.attr("id", "box-" + n);
             $("#tableGame").append(squareDiv);
-        };
+        }
         $("#tableGame").addClass("outsideDiv");
 
-    };
+    }
     createBox();
     assignInputArray();
     assignInputBox(inputArray);
@@ -87,7 +87,7 @@ const inputArray = [];
             }
             inputArray.push(row);
         }
-    };
+    }
 
     function assignInputBox(elements) {
         for (var i = 0; i < elements.length; i++) {
@@ -124,5 +124,24 @@ const inputArray = [];
             }
         }
 
-    };
+    }
+
+
+// FP-12-solve-button
+//This function will validate the sudoku table and take the time.
+$(".validate").on("click", function(){
+    //Stop the timer
+    //clearInterval(Interval);
+
+    let minutes = $("#minutes").text();
+    let seconds = $("#seconds").text();
+    let tens = $("#tens").text();
+
+    //let sudoku = checkNumbers()
+    $(".totalTime").append("You have used to carry out the sudoku: <b>"+minutes+":"+seconds+":"+tens+"</b>");
+    $("#checkSudoku").modal("show");
+
+});
+
+
 
