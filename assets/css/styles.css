@@ -1,3 +1,81 @@
+/* Countdown Timer */
+#seconds,#tens,.wrapper>p{
+    font-size: 70px;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sidenav {
+    height: 100%;
+    width: 40vh;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: darkgoldenrod;
+    padding-top: 20px;
+}
+.start-timer{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.start-button{
+    background-color:greenyellow;
+}
+.start-button:hover{
+    background-color: rgb(148, 247, 0);
+}
+.stop-button{
+    background-color: darkorange;
+}
+.start-button,.stop-button{
+    width: 80px;
+    font-weight: bold;
+}
+.stop-button:hover{
+    background-color:rgb(255, 115, 0);
+}
+.level-button{
+    padding: 8% 15%;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.level{
+    width: 100%;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.checkbtn{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10%;
+}
+.validate,.reset{
+    width: fit-content;
+    background-color:antiquewhite;
+}
+.validate:hover,.reset:hover{
+    background-color: wheat;
+}
+.start-button,.stop-button,.validate,.reset{
+    border: transparent;
+    border-radius: 10%;
+    padding: 5%;
+}
+
 /* Alyce Styles for GameTable */
 .outsideDiv {
     padding: 1%;
@@ -8,15 +86,12 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-
 }
-
 .squareBox {
     width: 28vh;
     height: 28vh;
     /* border: 2px solid red; */
 }
-
 .inputBox {
     width: 8vh;
     height: 8vh;
