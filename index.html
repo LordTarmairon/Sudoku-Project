@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <title>Sudoku Project</title>
   </head>
@@ -12,7 +13,7 @@
       <div class="sidenav">
         <div class="wrapper">
           <h1>Stopwatch</h1>
-          <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+          <p><span id="minutes">00</span>:<span id="seconds">00</span>:<span id="tens">00</span></p>
           <div class="start-buttons">
             <button id="button-start">Start</button>
             <button id="button-stop">Stop</button>
@@ -23,11 +24,6 @@
             Level
             <i class="fa fa-caret-down"></i>
           </button>
-          <div class="dropdown-container">
-            <a href="#">Easy</a>
-            <a href="#">Medium</a>
-            <a href="#">Hard</a>
-          </div>
           <div class="checkbtn">
             <button class="validate">Validate</button>
             <button class="validate">New</button>
@@ -39,7 +35,29 @@
     <main>
         <div id="tableGame"></div>
     </main>
+
+
+    <!-- Modal For Validate Sudoku -->
+    <div class="modal fade" id="checkSudoku" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Sudoku Validate</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="totalTime"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCRIPTS JS and JQUERY -->
     <script src="./assets/js/jquery-3.6.0.min.js"></script>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
     <script src="./assets/js/main.js"></script>
   </body>
 </html>
