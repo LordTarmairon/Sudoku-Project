@@ -23,12 +23,11 @@ window.onload = function () {
 
   buttonReset.onclick = function () {
     clearInterval(Interval);
-    tens = "00";
-    seconds = "00";
-    minutes = "00";
+    seconds = "0";
+    minutes = "0";
     appendTens.innerHTML = tens;
-    appendSeconds.innerHTML = seconds;
-    appendMinutes.innerHTML = minutes;
+    appendSeconds.innerHTML = "0" +seconds;
+    appendMinutes.innerHTML = "0" +minutes;
   }
 
   function startTimer() {
@@ -131,5 +130,53 @@ const inputArray = [];
         }
 
     };
+//FP-16-fill-game-board
+
+//When the buttons with the class level are clicked we get the level send to the api and get the numbers
+//then print the numbers insede the boxes and get the solution
+$(".level").on("click", function (){
+    $("h1").eq(0).text($(this).text());
+    let level = $(this).text().toLowerCase();
+
+    $.ajax({
+        url: "https://sugoku.herokuapp.com/board?difficulty="+level,
+        method: "GET",
+        crossDomain: true,
+        dataType: 'json',
+        success:function (result){
+            showNumbers(result.board);
+            //Start Timer
+            initTimer();
+            result = {board: JSON.stringify(result.board)}
+            $.post('https://sugoku.herokuapp.com/solve', result)
+                .done(function (response) {
+                    solved = response.solution;
+                });
+        }
+    });
+});
+//This function will validate the sudoku table and take the time.
+$(".validate").on("click", function(){
+    //Stop the timer
+    //clearInterval(Interval);
+
+    let minutes = $("#minutes").text();
+    let seconds = $("#seconds").text();
+    let tens = $("#tens").text();
+
+    //let sudoku = checkNumbers()
+    $(".totalTime").append("You have used to carry out the sudoku: <b>"+minutes+":"+seconds+":"+tens+"</b>");
+    $("#checkSudoku").modal("show");
+
+});
+/* Set the width of the side navigation to 250px */
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  /* Set the width of the side navigation to 0 */
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
 
 

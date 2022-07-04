@@ -9,43 +9,83 @@
   </head>
   <body>
     <main>
-      <section class="tableMenu">
-        <div class="sidenav">
-          <div class="wrapper">
-            <h1>Stopwatch</h1>
-            <p>
-              <span id="minutes">00</span>:<span id="seconds">00</span
-              ><span id="tens" hidden>00</span>
-            </p>
-            <div class="start-buttons">
-              <button id="button-start">Start</button>
-              <button id="button-stop">Stop</button>
-              <button id="button-reset">Reset</button>
+        <button type="button" onclick="openNav()" class="sideMenu"><em>Menu</em></button>
+        <section class="tableMenu" id="mySidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="sidenav">
+            <div class="wrapper">
+                <h1>Timer</h1>
+                <p>
+                <span id="minutes">00</span>:<span id="seconds">00</span
+                ><span id="tens" hidden>00</span>
+                </p>
+                <div class="start-timer">
+                <button id="button-start">Start</button>
+                <button id="button-stop">Stop</button>
+                <button id="button-reset">Reset</button>
+                </div>
             </div>
-          </div>
-          <div class="restbtns">
-            <button class="dropdown-btn">
-              Level
-              <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-container">
-              <a href="#">Easy</a>
-              <a href="#">Medium</a>
-              <a href="#">Hard</a>
+            <!-- Level Difficulty Button -->
+            <div class="container mt-3">
+                <div class="container mt-3">
+                <button type="button" class="btn-level" data-bs-toggle="modal" data-bs-target="#myModal">
+                    Levels
+                </button>
+                </div>
+                <div class="checkbtn">
+                <button class="new">New</button>
+                <button class="validate">Validate</button>
+                <button class="reset">Reset</button>
+                </div>
             </div>
-            <div class="checkbtn">
-              <button class="validate">Validate</button>
-              <button class="validate">New</button>
             </div>
-          </div>
-        </div>
+            <!-- Modal For Validate Sudoku -->
+            <div class="modal fade" id="checkSudoku" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Sudoku Validate</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="totalTime"></div>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- The Modal -->
+            <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+    
+                <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Difficulty Levels</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+            
+                <!-- Modal body -->
+                <div class="modal-body text-center">
+                    <div class="col-md-12">
+                    <button type="button" class="btn btn-danger" id="btn-easy" data-bs-dismiss="modal">Easy</button>
+                    <button type="button" class="btn btn-danger" id="btn-medium" data-bs-dismiss="modal">Medium</button>
+                    <button type="button" class="btn btn-danger" id="btn-hard" data-bs-dismiss="modal">Hard</button>
+                    </div>
+    
+                </div>
+                </div> <!-- End of modal-content -->
+    
+            </div>
       </section>
       <section class="table">
-        <h1>Jurassic Sudoku!</h1>
         <div id="tableGame"></div>
       </section>
     </main>
     <script src="./assets/js/jquery-3.6.0.min.js"></script>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
     <script src="./assets/js/main.js"></script>
   </body>
 </html>
