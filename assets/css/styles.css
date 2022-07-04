@@ -26,7 +26,9 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
-    /* Countdown Timer */
+    input {
+        text-align: center;
+    }
 /* Countdown Timer */
 #seconds,#tens,.wrapper>p{
     font-size: 70px;
