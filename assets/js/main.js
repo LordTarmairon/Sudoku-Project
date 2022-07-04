@@ -199,6 +199,19 @@ function showNumbers(numbers){
     }
 }
 
+ //Show Row Column Box
+ $("input").focus(function (event) {
+    $("input").removeClass("showRowCol");
+    var chooseBox = event.target;
+    var position = $(chooseBox).attr("data-input").split("-");
+    for (var i = 0; i < 9; i++) {
+        inputArray[position[0]][i].addClass("showRowCol");
+        inputArray[i][position[1]].addClass("showRowCol");
+    };
+    var parentBox = $(chooseBox).parent().attr("id").split("-");
+    $("#box-" + parentBox[1] + " input").addClass("showRowCol");
+});
+
 /* Set the width of the side navigation to 250px */
 function openNav() {
     $("#mySidenav").css("width", "250px");

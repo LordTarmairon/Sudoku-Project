@@ -232,8 +232,14 @@ a {
     padding: 20px;
 }
 
+  /* Show the Row and Column when focus */
+  .showRowCol {
+    background-color: cornsilk;
+  }
+
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
     #mySidenav {padding-top: 15px;}
     #mySidenav a {font-size: 18px;}
-}
+  }
+
