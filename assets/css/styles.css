@@ -233,4 +233,9 @@
     #mySidenav a {font-size: 18px;}
   }
 
+  /* Show the Row and Column when focus */
+  .showRowCol {
+    background-color: cornsilk;
+}
+
 
