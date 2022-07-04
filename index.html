@@ -8,36 +8,42 @@
     <title>Sudoku Project</title>
   </head>
   <body>
-    <section class="tableMenu">
-      <div class="sidenav">
-        <div class="wrapper">
-          <h1>Stopwatch</h1>
-          <p><span id="seconds">00</span>:<span id="tens">00</span></p>
-          <div class="start-buttons">
-            <button id="button-start">Start</button>
-            <button id="button-stop">Stop</button>
-          </div>
-        </div>
-        <div class="restbtns">
-          <button class="dropdown-btn">
-            Level
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="dropdown-container">
-            <a href="#">Easy</a>
-            <a href="#">Medium</a>
-            <a href="#">Hard</a>
-          </div>
-          <div class="checkbtn">
-            <button class="validate">Validate</button>
-            <button class="validate">New</button>
-            <button id="button-reset">Reset</button>
-          </div>
-        </div>
-      </div>
-    </section>
     <main>
-      <div id="tableGame"></div>
+      <section class="tableMenu">
+        <div class="sidenav">
+          <div class="wrapper">
+            <h1>Stopwatch</h1>
+            <p>
+              <span id="minutes">00</span>:<span id="seconds">00</span
+              ><span id="tens" hidden>00</span>
+            </p>
+            <div class="start-buttons">
+              <button id="button-start">Start</button>
+              <button id="button-stop">Stop</button>
+              <button id="button-reset">Reset</button>
+            </div>
+          </div>
+          <div class="restbtns">
+            <button class="dropdown-btn">
+              Level
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+              <a href="#">Easy</a>
+              <a href="#">Medium</a>
+              <a href="#">Hard</a>
+            </div>
+            <div class="checkbtn">
+              <button class="validate">Validate</button>
+              <button class="validate">New</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="table">
+        <h1>Jurassic Sudoku!</h1>
+        <div id="tableGame"></div>
+      </section>
     </main>
     <script src="./assets/js/jquery-3.6.0.min.js"></script>
     <script src="./assets/js/main.js"></script>
