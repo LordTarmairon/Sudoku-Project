@@ -1,68 +1,56 @@
 //timer
-window.onload = function () {
-    var minutes = 0;
-    var seconds = 0;
-    var tens = 0;
-    var appendTens = document.getElementById("tens");
-    var appendSeconds = document.getElementById("seconds");
-    var appendMinutes = document.getElementById("minutes");
-    var buttonStart = document.getElementById("button-start");
-    var buttonStop = document.getElementById("button-stop");
-    var buttonReset = document.getElementById("button-reset");
-    var Interval;
+var minutes = 0;
+var seconds = 0;
+var tens = 0;
+var Interval;
 
-  buttonStart.onclick = function () {
+$(".start-button").on("click", function(){
+    initTimer();
+});
+
+function initTimer() {
     clearInterval(Interval);
     Interval = setInterval(startTimer, 10);
-  }
+}
 
-  buttonStop.onclick = function () {
+$(".stop-button").on("click", function(){
     clearInterval(Interval);
-  }
+});
 
-  buttonReset.onclick = function () {
+$(".button-reset").on("click", function(){
     clearInterval(Interval);
     tens = "00";
     seconds = "00";
     minutes = "00";
-    appendTens.innerHTML = tens;
-    appendSeconds.innerHTML = seconds;
-  }
+    $("#tens").text(tens);
+    $("#seconds").text(seconds);
+});
 
-  function startTimer() {
+function startTimer() {
     tens++;
 
-    if (tens <= 9) {
-      appendTens.innerHTML = "0" + tens;
-    }
-
-    if (tens > 9) {
-      appendTens.innerHTML = tens;
-    }
-
     if (tens > 99) {
-      console.log("seconds");
-      seconds++;
-      appendSeconds.innerHTML = "0" + seconds;
-      tens = 0;
-      appendTens.innerHTML = "0" + 0;
+        console.log("seconds");
+        seconds++;
+        $("#seconds").text("0" + seconds);
+        tens = 0;
+        $("#tens").text("0" + 0);
     }
 
     if (seconds > 9) {
-      appendSeconds.innerHTML = seconds;
+        $("#seconds").text(seconds);
     }
 
     if(seconds > 59){
         console.log("minutes");
         minutes++;
-        appendMinutes.innerHTML = "0" + minutes;
+        $("#minutes").text("0" + minutes);
         seconds = 0;
-        appendSeconds.innerHTML = "0" + 0;
+        $("#seconds").text("0" + 0);
     }
     if (minutes > 9) {
-      appendSeconds.innerHTML = minutes;
+        $("#seconds").text(minutes);
     }
-  }
 }
 
 const inputArray = [];
@@ -130,6 +118,7 @@ const inputArray = [];
 // FP-12-solve-button
 //This function will validate the sudoku table and take the time.
 $(".validate").on("click", function(){
+    $(".totalTime").html("");
     //Stop the timer
     //clearInterval(Interval);
 
@@ -144,4 +133,43 @@ $(".validate").on("click", function(){
 });
 
 
+//FP-16-fill-game-board
 
+//When the buttons with the class level are clicked we get the level send to the api and get the numbers
+//then print the numbers insede the boxes and get the solution
+$(".level").on("click", function (){
+    $("h1").eq(0).text($(this).text());
+    let level = $(this).text().toLowerCase();
+
+    $.ajax({
+        url: "https://sugoku.herokuapp.com/board?difficulty="+level,
+        method: "GET",
+        crossDomain: true,
+        dataType: 'json',
+        success:function (result){
+            showNumbers(result.board);
+            //Start Timer
+            initTimer();
+            result = {board: JSON.stringify(result.board)}
+            $.post('https://sugoku.herokuapp.com/solve', result)
+                .done(function (response) {
+                    solved = response.solution;
+                });
+        }
+    });
+});
+
+//This function print the numbers inside the boxes
+function showNumbers(numbers){
+    for(var i = 0; i<inputArray.length; i++){
+        for(var j = 0; j< inputArray[i].length; j++){
+            if($(numbers)[i][j] !== 0){
+                $(inputArray[i][j]).val($(numbers)[i][j]);
+                $(inputArray[i][j]).prop("disabled", true)
+            } else {
+                $(inputArray[i][j]).val("");
+                $(inputArray[i][j]).prop("disabled", false)
+            }
+        }
+    }
+}
