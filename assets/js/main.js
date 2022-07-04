@@ -6,7 +6,6 @@ $(document).ready(function (){
 
 //Function for get the user name
 $("#btn-getUser").on("click", function() {
-    console.log("Echo")
     getUserName();
 });
 
@@ -78,87 +77,86 @@ function startTimer() {
 }
 
 const inputArray = [];
-    function createBox() {
-        for (let n = 1; n <= 9; n++) {
-            let squareDiv = $("<div class=squareBox></div>");
-            squareDiv.attr("id", "box-" + n);
-            $("#tableGame").append(squareDiv);
-        }
-        $("#tableGame").addClass("outsideDiv");
-
+function createBox() {
+    for (let n = 1; n <= 9; n++) {
+        let squareDiv = $("<div class=squareBox></div>");
+        squareDiv.attr("id", "box-" + n);
+        $("#tableGame").append(squareDiv);
     }
-    createBox();
-    assignInputArray();
-    assignInputBox(inputArray);
-    function assignInputArray() {
-        for (let i = 0; i < 9; i++) {
-            let row = [];
-            for (let j = 0; j < 9; j++) {
-                let input = $("<input type='text' data-input='" + i + "-" + j + "' maxlength='1' class='inputBox'/>");
-                row.push(input);
+    $("#tableGame").addClass("outsideDiv");
+}
+
+createBox();
+assignInputArray();
+assignInputBox(inputArray);
+function assignInputArray() {
+    for (let i = 0; i < 9; i++) {
+        let row = [];
+        for (let j = 0; j < 9; j++) {
+            let input = $("<input type='text' data-input='" + i + "-" + j + "' maxlength='1' class='bg-light bg-gradient inputBox'/>");
+            row.push(input);
+        }
+        inputArray.push(row);
+    }
+}
+
+function assignInputBox(elements) {
+    for (var i = 0; i < elements.length; i++) {
+        for (var j = 0; j < elements[i].length; j++) {
+            if (i <= 2 && j <= 2) {
+                $("#box-1").append(elements[i][j]);
             }
-            inputArray.push(row);
-        }
-    }
-
-    function assignInputBox(elements) {
-        for (var i = 0; i < elements.length; i++) {
-            for (var j = 0; j < elements[i].length; j++) {
-                if (i <= 2 && j <= 2) {
-                    $("#box-1").append(elements[i][j]);
-                }
-                if (i <= 2 && (j > 2 && j <= 5)) {
-                    $("#box-2").append(elements[i][j]);
-                }
-                if (i <= 2 && (j > 5 && j <= 8)) {
-                    $("#box-3").append(elements[i][j]);
-                }
-                //Second file
-                if ((i > 2 && i <= 5) && j <= 2) {
-                    $("#box-4").append(elements[i][j]);
-                }
-                if ((i > 2 && i <= 5) && (j > 2 && j <= 5)) {
-                    $("#box-5").append(elements[i][j]);
-                }
-                if ((i > 2 && i <= 5) && (j > 5 && j <= 8)) {
-                    $("#box-6").append(elements[i][j]);
-                }
-                //Last file
-                if ((i > 5 && i <= 8) && j <= 2) {
-                    $("#box-7").append(elements[i][j]);
-                }
-                if ((i > 5 && i <= 8) && (j > 2 && j <= 5)) {
-                    $("#box-8").append(elements[i][j]);
-                }
-                if ((i > 5 && i <= 8) && (j > 5 && j <= 8)) {
-                    $("#box-9").append(elements[i][j]);
-                }
+            if (i <= 2 && (j > 2 && j <= 5)) {
+                $("#box-2").append(elements[i][j]);
+            }
+            if (i <= 2 && (j > 5 && j <= 8)) {
+                $("#box-3").append(elements[i][j]);
+            }
+            //Second file
+            if ((i > 2 && i <= 5) && j <= 2) {
+                $("#box-4").append(elements[i][j]);
+            }
+            if ((i > 2 && i <= 5) && (j > 2 && j <= 5)) {
+                $("#box-5").append(elements[i][j]);
+            }
+            if ((i > 2 && i <= 5) && (j > 5 && j <= 8)) {
+                $("#box-6").append(elements[i][j]);
+            }
+            //Last file
+            if ((i > 5 && i <= 8) && j <= 2) {
+                $("#box-7").append(elements[i][j]);
+            }
+            if ((i > 5 && i <= 8) && (j > 2 && j <= 5)) {
+                $("#box-8").append(elements[i][j]);
+            }
+            if ((i > 5 && i <= 8) && (j > 5 && j <= 8)) {
+                $("#box-9").append(elements[i][j]);
             }
         }
-
     }
+}
 
 
 // FP-12-solve-button
 //This function will validate the sudoku table and take the time.
 $(".validate").on("click", function(){
     $(".totalTime").html("");
-    //Stop the timer
-    //clearInterval(Interval);
 
+    //Stop the timer
+    clearInterval(Interval);
     let minutes = $("#minutes").text();
     let seconds = $("#seconds").text();
     let tens = $("#tens").text();
+    $(".btn-level").prop("disabled", false);
 
     //let sudoku = checkNumbers()
-    $(".totalTime").append("You have used to carry out the sudoku: <b>"+minutes+":"+seconds+":"+tens+"</b>");
+    $(".totalTime").append("<p class='alert alert-primary text-black'>You have used to carry out the sudoku: <b>"+minutes+":"+seconds+":"+tens+"</b></p>");
     $("#checkSudoku").modal("show");
 
 });
 
 
 //FP-16-fill-game-board
-
 //When the buttons with the class level are clicked we get the level send to the api and get the numbers
 //then print the numbers insede the boxes and get the solution
 $(".level").on("click", function (){
@@ -171,6 +169,7 @@ $(".level").on("click", function (){
         crossDomain: true,
         dataType: 'json',
         success:function (result){
+            $(".btn-level").prop("disabled", true);
             showNumbers(result.board);
             //Start Timer
             initTimer();
@@ -190,10 +189,22 @@ function showNumbers(numbers){
             if($(numbers)[i][j] !== 0){
                 $(inputArray[i][j]).val($(numbers)[i][j]);
                 $(inputArray[i][j]).prop("disabled", true)
+                $(inputArray[i][j]).removeClass("bg-light");
+                $(inputArray[i][j]).addClass("bg-secondary");
             } else {
                 $(inputArray[i][j]).val("");
                 $(inputArray[i][j]).prop("disabled", false)
             }
         }
     }
+}
+
+/* Set the width of the side navigation to 250px */
+function openNav() {
+    $("#mySidenav").css("width", "250px");
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+    $("#mySidenav").css("width", "0");
 }

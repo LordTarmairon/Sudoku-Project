@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,108 +8,119 @@
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/styles.css" >
     <title>Sudoku Project</title>
-  </head>
-  <body>
-    <section class="timer">
-      <div class="sidenav">
-        <div class="wrapper">
-          <div style="width:100%;" class=" text-center bg-warning bg-gradient">
-            <h1 >Timer</h1>
-          </div>
-          <p><span id="minutes">00</span>:<span id="seconds">00</span></p>
-          <div class="start-timer">
-            <button class="start-button">Start</button>
-            <button class="stop-button">Stop</button>
-          </div>
-        </div>
+    <styles>
+        * {cursor: url(https://cur.cursors-4u.net/nature/nat-1/nat47.ani), auto !important;} /* End https://www.cursors-4u.com */
 
-        <!-- Level Difficulty Button -->
-        <div class="container mt-3">
-          <div class="container mt-3">
-            <button type="button" class="btn-level" data-bs-toggle="modal" data-bs-target="#myModal">
-              Levels
-            </button>
-          </div>
-        
-          <div class="checkbtn">
-            <button class="validate">Validate</button>
-            <button class="validate">New</button>
-            <button class="reset">Reset</button>
-          </div>
+    </styles>
+</head>
+<body>
+<main>
+    <button type="button" onclick="openNav()" class="sideMenu"><em>Menu</em></button>
+    <section class="tableMenu" id="mySidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="sidenav">
+            <div class="wrapper">
+                <div style="width:100%;" class=" text-center bg-warning bg-gradient">
+                    <h1 >Timer</h1>
+                </div>                <p>
+                <span id="minutes">00</span>:<span id="seconds">00</span><span id="tens" hidden>00</span>
+                </p>
+                <div class="start-timer">
+                    <button id="button-start">Start</button>
+                    <button id="button-stop">Stop</button>
+                    <button id="button-reset">Reset</button>
+                </div>
+            </div>
+            <!-- Level Difficulty Button -->
+            <div class="container mt-3">
+                <div class="container mt-3">
+                    <button type="button" class="btn-level shadow btn btn-primary text-white bg-gradient rounded" data-bs-toggle="modal" data-bs-target="#myModal">
+                        <i class="fa fa-puzzle-piece"></i>
+                        Levels
+                    </button>
+                </div>
+                <div class="checkbtn">
+                    <button class="new">New</button>
+                    <button class="validate">Validate</button>
+                    <button class="reset">Reset</button>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
-    <main>
+    <section class="table">
         <div id="tableGame"></div>
-    </main>
-    <!-- Modal For Validate Sudoku -->
-    <div class="modal fade" id="checkSudoku" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Sudoku Validate</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="totalTime"></div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal For Get UserName-->
-    <div class="modal fade" id="userNameModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header alert alert-success">
-            <h5 class="modal-title">User Name:</h5>
-          </div>
-          <div class="modal-body">
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
-              <input type="text" name="username" id="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
-            </div>
-            <div class="alert-username alert alert-danger text-center" role="alert">
-              <span class="alert-danger">It is mandatory to enter a username</span>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" id="btn-getUser" class="btn btn-success btn-lg m-auto">Save</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
+</main>
 
-      <!-- The Modal -->
-      <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
+<!-- Modal For Validate Sudoku -->
+<div class="modal fade" id="checkSudoku" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Sudoku Validate</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="totalTime"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal For Get UserName-->
+<div class="modal fade" id="userNameModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header alert alert-success">
+                <h5 class="modal-title">User Name:</h5>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+                </div>
+                <div class="alert-username alert alert-danger text-center" role="alert">
+                    <span class="alert-danger">It is mandatory to enter a username</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn-getUser" class="btn btn-success btn-lg m-auto">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-          <div class="modal-content">
+<!-- The Modal -->
+<div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header alert alert-info">
-              <h4 class="modal-title">Difficulty Levels</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <h4 class="modal-title">Difficulty Levels</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
             <!-- Modal body -->
             <div class="modal-body text-center">
-              <div class="col-md-12 ">
-                <button type="button" class="btn level btn-danger col-md-4 p-2 mb-3" id="btn-easy" data-bs-dismiss="modal">Easy</button> <br>
-                <button type="button" class="btn level btn-danger col-md-4 p-2 mb-3" id="btn-medium" data-bs-dismiss="modal">Medium</button> <br>
-                <button type="button" class="btn level btn-danger col-md-4 p-2" id="btn-hard" data-bs-dismiss="modal">Hard</button>
-              </div>
+                <div class="col-md-12 ">
+                    <button type="button" class="btn level btn-danger col-md-4 p-2 mb-3" id="btn-easy" data-bs-dismiss="modal">Easy</button> <br>
+                    <button type="button" class="btn level btn-danger col-md-4 p-2 mb-3" id="btn-medium" data-bs-dismiss="modal">Medium</button> <br>
+                    <button type="button" class="btn level btn-danger col-md-4 p-2" id="btn-hard" data-bs-dismiss="modal">Hard</button>
+                </div>
 
             </div>
-          </div> <!-- End of modal-content -->
+        </div> <!-- End of modal-content -->
 
-        </div>
     </div>
+</div>
 
-    <!-- SCRIPTS JS and JQUERY -->
-    <script src="./assets/js/jquery-3.6.0.min.js"></script>
-    <script src="./assets/js/bootstrap.bundle.min.js"></script>
-    <script src="./assets/js/main.js"></script>
-  </body>
+
+<!-- SCRIPTS JS and JQUERY -->
+<script src="./assets/js/jquery-3.6.0.min.js"></script>
+<script src="./assets/js/bootstrap.bundle.min.js"></script>
+<script src="./assets/js/main.js"></script>
+</body>
 </html>
