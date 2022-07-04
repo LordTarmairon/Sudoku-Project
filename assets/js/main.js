@@ -1,8 +1,33 @@
 //timer
+$(document).ready(function (){
+    $(".alert-username").hide();
+    $("#userNameModal").modal("show");
+});
+
+//Function for get the user name
+$("#btn-getUser").on("click", function() {
+    console.log("Echo")
+    getUserName();
+});
+
+function getUserName(){
+    $(".alert-username").fadeOut()
+    let userName = $("#username").val()
+    if(userName === ""){
+        $(".alert-username").fadeIn();
+        $("#username").focus()
+        return false;
+    }
+    name = userName;
+    $("#userNameModal").modal("hide");
+    return true;
+}
 var minutes = 0;
 var seconds = 0;
 var tens = 0;
 var Interval;
+var level = "";
+var name = "";
 
 $(".start-button").on("click", function(){
     initTimer();
@@ -30,7 +55,6 @@ function startTimer() {
     tens++;
 
     if (tens > 99) {
-        console.log("seconds");
         seconds++;
         $("#seconds").text("0" + seconds);
         tens = 0;
@@ -139,7 +163,7 @@ $(".validate").on("click", function(){
 //then print the numbers insede the boxes and get the solution
 $(".level").on("click", function (){
     $("h1").eq(0).text($(this).text());
-    let level = $(this).text().toLowerCase();
+    level = $(this).text().toLowerCase();
 
     $.ajax({
         url: "https://sugoku.herokuapp.com/board?difficulty="+level,
