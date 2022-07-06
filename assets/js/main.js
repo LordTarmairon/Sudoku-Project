@@ -267,9 +267,9 @@ function showNumbers(numbers){
      }
 });
 
-/* Set the width of the side navigation to 250px */
+/* Set the width of the side navigation to 385px */
 $("#btn-sideMenu").on("click", function () {
-    $("#mySidenav").css("width", "250px");
+    $("#mySidenav").css("width", "385px");
 });
 
 /* Set the width of the side navigation to 0 */
