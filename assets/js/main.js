@@ -25,10 +25,11 @@ $("#btn-getUser").on("click", function() {
 
 function getUserName(){
     $(".alert-username").fadeOut()
-    let userName = $("#username").val()
+    let userName = $("#username").val();
+    $(".get-username").text(userName);
     if(userName === ""){
         $(".alert-username").fadeIn();
-        $("#username").focus()
+        $("#username").focus();
         return false;
     }
     name = userName;
