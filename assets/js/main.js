@@ -104,7 +104,7 @@ function assignInputArray() {
     for (let i = 0; i < 9; i++) {
         let row = [];
         for (let j = 0; j < 9; j++) {
-            let input = $("<input type='text' data-input='" + i + "-" + j + "' maxlength='1' class='bg-light bg-gradient inputBox'/>");
+            let input = $("<input type='text' data-input='" + i + "-" + j + "' maxlength='1' class='bg-light bg-gradient inputBox' />");
             row.push(input);
         }
         inputArray.push(row);
@@ -169,14 +169,14 @@ $(".validate").on("click", function(){
 
     let text = $("<p class='text-black'></p>")
     if(result.status){
-        $("#head-score").append("Congratulations! <b>"+result.user+"</b> &#127881; &#127882;");
+        $("#head-score").append("Well done! <b>"+result.user+"</b> &#127881; &#127882;");
         $(".head-result").addClass("alert alert-success");
-        content = "You have used to carry out the sudoku: <b>"+minutes+":"+seconds+":"+tens+"</b> <br/><br/> Your Score is: <b>"+result.score+"</b></p><p class='fst-italic alert alert-info'>"+result.message+" </p>";
+        content = "You have spent: <b>"+minutes+":"+seconds+":"+tens+"</b> <br/><br/> Your Score is: <b>"+result.score+"</b></p><p class='fst-italic alert alert-info'>"+result.message+" </p>";
 
     } else {
         $("#head-score").append("You didn't get it! <b>"+result.user+"</b> &#10060;")
         $(".head-result").addClass("alert alert-danger");
-        content = "You have used to carry out the sudoku: <b>"+minutes+":"+seconds+":"+tens+"</b> <br/><br/> Your Score is: <b>"+result.score+"</b></p><p class='fst-italic alert alert-warning'>"+result.message+" </p>";
+        content = "You have spent: <b>"+minutes+":"+seconds+":"+tens+"</b> <br/><br/> Your Score is: <b>"+result.score+"</b></p><p class='fst-italic alert alert-warning'>"+result.message+" </p>";
     }
     text.append(content);
     $(".totalTime").append(text);
@@ -426,21 +426,20 @@ function checkAll (){
                     inputsTrue--;
                 }
             } else {
-                console.log("Entre en el blanco")
                 inputsTrue--;
             }
         }
     }
     console.log(inputsTrue)
    // console.log(totalInputs)
-   // console.log((inputsTrue*100/totalInputs).toFixed(2))
+    console.log((inputsTrue*100/totalInputs).toFixed(2))
 
 
 
     console.log(count)
     switch (count){
         case 0:
-            return {status: true, user:name, level:$("h1").eq(0).text(), score:totalScore+"%", message: "Congratulations! you have successfully completed the Sudoku"};
+            return {status: true, user:name, level:$("h1").eq(0).text(), score:totalScore+"%", message: "Congratulations! You have successfully completed the Sudoku"};
             break;
         case 1:
             return {status: false, user:name, level:$("h1").eq(0).text(), score:totalScore+"%", message: "You have same values in the same Row"};
