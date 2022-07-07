@@ -86,7 +86,7 @@ $(document).ready(function (){
     function getUserName(){
         $(".alert-username").fadeOut();
         let userName = $("#username").val();
-        $(".get-username").text(userName);
+        $(".get-username").text(userName + "!");
         if(userName === ""){
             $(".alert-username").fadeIn();
             $("#username").focus()
@@ -163,7 +163,6 @@ $(document).ready(function (){
         }
 
         if(seconds > 59){
-            console.log("minutes");
             minutes++;
             $("#minutes").text("0" + minutes);
             seconds = 0;
@@ -231,7 +230,7 @@ $(document).ready(function (){
 
         //Dino animation
         $("#dino").animate({
-            left:"100%"},  2000);
+            left:"100%"},  1000);
         $("#dino").animate({
             opacity: "0"});
         $("#dino").animate({
@@ -384,7 +383,6 @@ $(document).ready(function (){
             let tdSc = $("<td></td>");
             let tdL = $("<td></td>");
             let tdP = $("<td></td>");
-            console.log(scores[j].status)
             tdP.append(total);
             tdN.append(scores[j].user);
             tdSt.append(scores[j].status+" ");
@@ -407,7 +405,6 @@ $(document).ready(function (){
         let count = 0;
         var inputsTrue = totalInputs;
         let totalScore = 0;
-        console.log(inputsTrue)
 
         for(var n = 0; n<inputArray.length; n++){
             for(var j = 0; j< inputArray[n].length; j++){
@@ -420,7 +417,6 @@ $(document).ready(function (){
                     let inputBox = $(inp).parent();
                     //Check if the value exist in the same row
                     inputArray[inputData[0]].forEach(function(element, key){
-                        console.log(element)
                         if($(element).val() === $(inp).val() && $(element).attr("data-input") !== $(inp).attr("data-input")){
                             $(inp).removeClass("bg-light");
                             $(inp).addClass("bg-warning");
@@ -437,10 +433,6 @@ $(document).ready(function (){
                     //Check if the value exist in the same col
                     for(var i = 0; i< inputArray.length ; i++){
                         var element = inputArray[i][inputData[1]];
-                        if($(element).val() === undefined){
-                            console.log($(element).val())
-                            return;
-                        }
                         if($(element).val() === $(inp).val() && $(element).attr("data-input") !== $(inp).attr("data-input")){
                             $(inp).removeClass("bg-light");
                             $(inp).addClass("bg-warning");
@@ -473,7 +465,6 @@ $(document).ready(function (){
                 }
             }
         }
-        // console.log(totalInputs)
         totalScore = (inputsTrue*100/totalInputs).toFixed(2);
 
         if(inputsTrue === 0 && count === 0){
@@ -544,10 +535,6 @@ $(document).ready(function (){
                     //Check if the value exist in the same col
                     for(var i = 0; i< inputArray.length ; i++){
                         var element = inputArray[i][inputData[1]];
-                        if($(element).val() === undefined){
-                            console.log($(element).val())
-                            return;
-                        }
                         if($(element).val() === $(inp).val() && $(element).attr("data-input") !== $(inp).attr("data-input")){
                             $(inp).removeClass("bg-light");
                             $(inp).addClass("bg-warning");
