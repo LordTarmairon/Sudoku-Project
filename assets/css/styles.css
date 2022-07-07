@@ -21,6 +21,7 @@ div {
     z-index: 5;
     top: 9.5%;
     left: -11%;
+    overflow: hidden;
 
 }
 h1{
@@ -80,6 +81,17 @@ input {
 
 #button-reset:hover {
     background-color: rgb(1, 77, 1);
+}
+.topnav-username{
+    text-align: center;
+}
+.topnav-username,.get-username{
+    color: #f1f1f1;
+    font-size: 30px;
+    font-weight: bold;
+    font-style: italic;
+    margin-bottom: 5%;
+    word-wrap: break-word;
 
 }
 .container{
@@ -154,18 +166,17 @@ input {
 
 /* Alyce Styles for GameTable */
 .outsideDiv {
+    border-radius: 5px;
     padding: 1%;
     width: 90vh;
     height: 100vh;
-    background-color: rgb(51, 85, 53);
-    opacity: 90%;
-    box-shadow: 10px 10px 10px rgba(39, 129, 21, 0.89);
+    background-color: rgb(186, 146, 95);
+    box-shadow: 10px 10px 10px rgba(204, 198, 169, 0.8);
     /* margin-left: 50px; */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
-
 }
 
 .squareBox {
@@ -231,7 +242,7 @@ a {
 
   /* Show the Row and Column when focus */
   .showRowCol {
-    background-color: cornsilk !important;
+      background-color: cornsilk !important;
   }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
@@ -239,4 +250,3 @@ a {
     #mySidenav {padding-top: 15px;}
     #mySidenav a {font-size: 18px;}
   }
-
