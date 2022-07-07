@@ -329,3 +329,54 @@ a {
     background-color: transparent;
     border: none;
 }
+.dinosaur-group{
+    position: absolute;
+    z-index: 5;
+    top: 9.5%;
+    overflow: hidden;
+}
+.dinosaur-group .group img:last-child {
+    display: block;
+}
+.dinosaur-group {
+    position: absolute;
+    z-index: 5;
+    top: 10.5%;
+    overflow: hidden;
+    transform: scaleX(-1);
+}
+
+#dino-1{
+    top: 0;
+    right: -21%;
+}
+
+#dino-2{
+    top: 15%;
+    right: -24%;
+}
+
+#dino-3{
+    top: 25%;
+    right: -18%;
+}
+
+#dino-4{
+    top: 40%;
+    right: -20%;
+}
+#dino-5{
+    top: 55%;
+    right: -21%;
+}
+#dino-6{
+    top: 75%;
+    right: -18%;
+}
+#dino-7{
+    right: -25%;
+}
+#dino-8{
+    top: 40%;
+    right: -25%;
+}
