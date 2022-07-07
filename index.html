@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/styles.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <title>Sudoku Project</title>
 </head>
 <body>
@@ -15,9 +16,12 @@
 <main>
     <button type="button"  id="btn-sideMenu" class="sideMenu"><em>Menu</em></button>
     <section class="tableMenu" id="mySidenav">
-        <a href="javascript:void(0)" id="btn-clssideMenu" class="closebtn" >&times;</a>
+        <!-- <a href="javascript:void(0)" id="btn-clssideMenu" class="closebtn" >&times;</a> -->
         <div class="sidenav">
-            <div class="topnav-username">Welcome <span class="get-username"></span>!</div>
+            <div class="topnav-username">Welcome
+                <a href="javascript:void(0)" id="btn-clssideMenu" class="closebtn" >&times;</a>
+                <span class="get-username"></span>
+            </div>
             <div class="wrapper">
                 <div style="width:100%;" class=" text-center bg-warning bg-gradient">
                     <h1 >Timer</h1>
@@ -53,9 +57,9 @@
     </section>
     <section class="tableB text-center">
         <div id="tableGame"></div>
-    </section>
+        <aside class="footer"><a target="_blank" href="https://github.com/LordTarmairon/Sudoku-Project"><img></a></aside>
+    </section> 
 </main>
-
 <!-- Modal For Validate Sudoku -->
 <div class="modal fade" id="checkSudoku" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -153,4 +157,5 @@
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
 <script src="./assets/js/main.js"></script>
 </body>
+
 </html>
