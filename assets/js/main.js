@@ -86,7 +86,7 @@ $(document).ready(function (){
     function getUserName(){
         $(".alert-username").fadeOut();
         let userName = $("#username").val();
-        $(".get-username").text(userName);
+        $(".get-username").text(userName + " !");
         if(userName === ""){
             $(".alert-username").fadeIn();
             $("#username").focus()
@@ -163,7 +163,6 @@ $(document).ready(function (){
         }
 
         if(seconds > 59){
-            console.log("minutes");
             minutes++;
             $("#minutes").text("0" + minutes);
             seconds = 0;
@@ -199,11 +198,13 @@ $(document).ready(function (){
         if(result.status){
             $("#head-score").append("Congratulations! <b>"+result.user+"</b> &#127881; &#127882;");
             $(".head-result").addClass("alert alert-success");
+            $(".head-result").removeClass("alert-danger");
             content = "You have spent: <b>"+minutes+" min : "+seconds+" sec: "+tens+" msec</b> <br/><br/> Your Score is: <b>"+result.score+"%</b></p><p class='fst-italic alert alert-info'>"+result.message+" </p>";
 
         } else {
             $("#head-score").append("You didn't get it! <b>"+result.user+"</b> &#10060;")
             $(".head-result").addClass("alert alert-danger");
+            $(".head-result").removeClass("alert-success");
             content = "You have spent: <b>"+minutes+":"+seconds+":"+tens+"</b> <br/><br/> Your Score is: <b>"+result.score+"%</b></p><p class='fst-italic alert alert-warning'>"+result.message+" </p>";
         }
         text.append(content);
@@ -309,7 +310,7 @@ $(document).ready(function (){
 
     /* Set the width of the side navigation to 385px */
     $("#btn-sideMenu").on("click", function () {
-        $("#mySidenav").css("width", "250");
+        $("#mySidenav").css("width", "385");
     });
 
     /* Set the width of the side navigation to 0 */
@@ -412,7 +413,6 @@ $(document).ready(function (){
         let count = 0;
         var inputsTrue = totalInputs;
         let totalScore = 0;
-        console.log(inputsTrue)
 
         for(var n = 0; n<inputArray.length; n++){
             for(var j = 0; j< inputArray[n].length; j++){
@@ -425,7 +425,6 @@ $(document).ready(function (){
                     let inputBox = $(inp).parent();
                     //Check if the value exist in the same row
                     inputArray[inputData[0]].forEach(function(element, key){
-                        console.log(element)
                         if($(element).val() === $(inp).val() && $(element).attr("data-input") !== $(inp).attr("data-input")){
                             $(inp).removeClass("bg-light");
                             $(inp).addClass("bg-warning");
@@ -443,7 +442,6 @@ $(document).ready(function (){
                     for(var i = 0; i< inputArray.length ; i++){
                         var element = inputArray[i][inputData[1]];
                         if($(element).val() === undefined){
-                            console.log($(element).val())
                             return;
                         }
                         if($(element).val() === $(inp).val() && $(element).attr("data-input") !== $(inp).attr("data-input")){
@@ -550,7 +548,6 @@ $(document).ready(function (){
                     for(var i = 0; i< inputArray.length ; i++){
                         var element = inputArray[i][inputData[1]];
                         if($(element).val() === undefined){
-                            console.log($(element).val())
                             return;
                         }
                         if($(element).val() === $(inp).val() && $(element).attr("data-input") !== $(inp).attr("data-input")){
@@ -580,7 +577,6 @@ $(document).ready(function (){
     }
 
     function dinoScript(){
-        console.log("entre")
         $(".dinosaur-group").removeClass("d-none");
         $("#dino-1").animate({
             right:"100%"},  3000);
