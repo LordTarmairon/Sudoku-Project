@@ -86,7 +86,7 @@ $(document).ready(function (){
     function getUserName(){
         $(".alert-username").fadeOut();
         let userName = $("#username").val();
-        $(".get-username").text(userName + "!");
+        $(".get-username").text(userName);
         if(userName === ""){
             $(".alert-username").fadeIn();
             $("#username").focus()
@@ -163,6 +163,7 @@ $(document).ready(function (){
         }
 
         if(seconds > 59){
+            console.log("minutes");
             minutes++;
             $("#minutes").text("0" + minutes);
             seconds = 0;
@@ -210,6 +211,7 @@ $(document).ready(function (){
 
         //let sudoku = checkNumbers()
         $("#checkSudoku").modal("show");
+        dinoScript();
     });
 
 
@@ -230,14 +232,13 @@ $(document).ready(function (){
 
         //Dino animation
         $("#dino").animate({
-            left:"100%"},  1000);
+            left:"100%"},  2000);
         $("#dino").animate({
             opacity: "0"});
         $("#dino").animate({
             left:"-11%"});
         $("#dino").animate({
             opacity: "100"});
-
         //Ajax information
         $.ajax({
             url: "https://sugoku.herokuapp.com/board?difficulty="+level,
@@ -377,6 +378,12 @@ $(document).ready(function (){
         scores.sort(compare);
 
         for(var j = scores.length-1; j >= 0; j--){
+            let statusUser = "";
+            if(scores[j].status){
+                statusUser = "Complete";
+            } else {
+                statusUser = "Incomplete";
+            }
             let tr = $("<tr></tr>");
             let tdN = $("<td></td>");
             let tdSt = $("<td></td>");
@@ -385,7 +392,7 @@ $(document).ready(function (){
             let tdP = $("<td></td>");
             tdP.append(total);
             tdN.append(scores[j].user);
-            tdSt.append(scores[j].status+" ");
+            tdSt.append(statusUser);
             tdSc.append(scores[j].score+"%");
             tdL.append(scores[j].level);
 
@@ -405,6 +412,7 @@ $(document).ready(function (){
         let count = 0;
         var inputsTrue = totalInputs;
         let totalScore = 0;
+        console.log(inputsTrue)
 
         for(var n = 0; n<inputArray.length; n++){
             for(var j = 0; j< inputArray[n].length; j++){
@@ -417,6 +425,7 @@ $(document).ready(function (){
                     let inputBox = $(inp).parent();
                     //Check if the value exist in the same row
                     inputArray[inputData[0]].forEach(function(element, key){
+                        console.log(element)
                         if($(element).val() === $(inp).val() && $(element).attr("data-input") !== $(inp).attr("data-input")){
                             $(inp).removeClass("bg-light");
                             $(inp).addClass("bg-warning");
@@ -433,6 +442,10 @@ $(document).ready(function (){
                     //Check if the value exist in the same col
                     for(var i = 0; i< inputArray.length ; i++){
                         var element = inputArray[i][inputData[1]];
+                        if($(element).val() === undefined){
+                            console.log($(element).val())
+                            return;
+                        }
                         if($(element).val() === $(inp).val() && $(element).attr("data-input") !== $(inp).attr("data-input")){
                             $(inp).removeClass("bg-light");
                             $(inp).addClass("bg-warning");
@@ -465,6 +478,7 @@ $(document).ready(function (){
                 }
             }
         }
+        // console.log(totalInputs)
         totalScore = (inputsTrue*100/totalInputs).toFixed(2);
 
         if(inputsTrue === 0 && count === 0){
@@ -535,6 +549,10 @@ $(document).ready(function (){
                     //Check if the value exist in the same col
                     for(var i = 0; i< inputArray.length ; i++){
                         var element = inputArray[i][inputData[1]];
+                        if($(element).val() === undefined){
+                            console.log($(element).val())
+                            return;
+                        }
                         if($(element).val() === $(inp).val() && $(element).attr("data-input") !== $(inp).attr("data-input")){
                             $(inp).removeClass("bg-light");
                             $(inp).addClass("bg-warning");
@@ -561,8 +579,92 @@ $(document).ready(function (){
         }
     }
 
-});
+    function dinoScript(){
+        console.log("entre")
+        $(".dinosaur-group").removeClass("d-none");
+        $("#dino-1").animate({
+            right:"100%"},  3000);
+        $("#dino-1").animate({
+            opacity: "0"});
+        $("#dino-1").animate({
+            right:"-21%"});
+        $("#dino-1").animate({
+            opacity: "100"});
+        $("#dino-2").animate({
+            right:"100%"},  4000);
+        $("#dino-2").animate({
+            opacity: "0"});
+        $("#dino-2").animate({
+            right:"-24%"});
+        $("#dino-2").animate({
+            opacity: "100"});
+        $("#dino-3").animate({
+            right:"100%"},  3500);
+        $("#dino-3").animate({
+            opacity: "0"});
+        $("#dino-3").animate({
+            right:"-18%"});
+        $("#dino-3").animate({
+            opacity: "100"});
+        $("#dino-4").animate({
+            right:"100%"},  2500);
+        $("#dino-4").animate({
+            opacity: "0"});
+        $("#dino-4").animate({
+            right:"-20%"});
+        $("#dino-4").animate({
+            opacity: "100"});
+        $("#dino-5").animate({
+            right:"100%"},  3900);
+        $("#dino-5").animate({
+            opacity: "0"});
+        $("#dino-5").animate({
+            right:"-21%"});
+        $("#dino-5").animate({
+            opacity: "100"});
+        $("#dino-6").animate({
+            right:"100%"},  1900);
+        $("#dino-6").animate({
+            opacity: "0"});
+        $("#dino-6").animate({
+            right:"-18%"});
+        $("#dino-6").animate({
+            opacity: "100"});
+        $("#dino-7").animate({
+            right:"100%"},  1900);
+        $("#dino-7").animate({
+            opacity: "0"});
+        $("#dino-7").animate({
+            right:"-25%"});
+        $("#dino-7").animate({
+            opacity: "100"});
+        $("#dino-8").animate({
+            right:"100%"},  4500);
+        $("#dino-8").animate({
+            opacity: "0"});
+        $("#dino-8").animate({
+            right:"-25%"});
+        $("#dino-8").animate({
+            opacity: "100"});
+        window.setTimeout(function(){
+            $(".dinosaur-group").hide();
+        }, 4500);
+    }
 
+    //cheats....
+    $(document).on("click", ".cheats", function(){
+        for(var i = 0; i<inputArray.length; i++){
+            for(var j = 0; j< inputArray[i].length; j++){
+                $(inputArray[i][j]).val($(solved)[i][j]);
+            }
+        }
+        $(this).fadeOut();
+    });
+
+});
+function cheater(){
+    $(".tableMenu").append("<button class='btn btn-danger cheats'>cheats</button>");
+}
 createBox();
 assignInputArray();
 assignInputBox(inputArray);
