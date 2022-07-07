@@ -13,79 +13,6 @@ var name = "";
 var numbersArray = [];
 var totalInputs = 81;
 
-//Function for get the user name
-$("#btn-getUser").on("click", function() {
-    getUserName();
-});
-
-function getUserName(){
-    $(".alert-username").fadeOut()
-    let userName = $("#username").val();
-    $(".get-username").text(userName);
-    if(userName === ""){
-        $(".alert-username").fadeIn();
-        $("#username").focus();
-        return false;
-    }
-    name = userName;
-    $("#userNameModal").modal("hide");
-    return true;
-}
-
-
-$(".start-button").on("click", function(){
-    initTimer();
-});
-
-function initTimer() {
-    clearInterval(Interval);
-    Interval = setInterval(startTimer, 10);
-}
-
-$(".stop-button").on("click", function(){
-    clearInterval(Interval);
-});
-
-$(".button-reset").on("click", function(){
-    restartTimer();
-});
-
-//This function restore the timer to 00:00
-function restartTimer(){
-    clearInterval(Interval);
-    tens = "00";
-    seconds = "00";
-    minutes = "00";
-    $("#tens").text(tens);
-    $("#seconds").text(seconds);
-}
-
-function startTimer() {
-    tens++;
-
-    if (tens > 99) {
-        seconds++;
-        $("#seconds").text("0" + seconds);
-        tens = 0;
-        $("#tens").text("0" + 0);
-    }
-
-    if (seconds > 9) {
-        $("#seconds").text(seconds);
-    }
-
-    if(seconds > 59){
-        console.log("minutes");
-        minutes++;
-        $("#minutes").text("0" + minutes);
-        seconds = 0;
-        $("#seconds").text("0" + 0);
-    }
-    if (minutes > 9) {
-        $("#seconds").text(minutes);
-    }
-}
-
 function createBox() {
     for (let n = 1; n <= 9; n++) {
         let squareDiv = $("<div class=squareBox></div>");
@@ -99,7 +26,7 @@ function assignInputArray() {
     for (let i = 0; i < 9; i++) {
         let row = [];
         for (let j = 0; j < 9; j++) {
-            let input = $("<input type='text' data-input='" + i + "-" + j + "' maxlength='1' class='bg-light bg-gradient inputBox' />");
+            let input = $("<input type='text' data-input='" + i + "-" + j + "' maxlength='1' class='bg-light bg-gradient inputBox'/>");
             row.push(input);
         }
         inputArray.push(row);
@@ -145,41 +72,11 @@ $(document).ready(function (){
     $(".alert-username").hide();
     $("#userNameModal").modal("show");
     $("#username").focus();
-    
+
+
     function cleanInputArray(){
         $(".inputBox").removeClass("bg-secondary");
         $(".inputBox").removeClass("input-default");
-    }
-    
-// FP-12-solve-button
-//This function will validate the sudoku table and take the time.
-$(".validate").on("click", function(){
-    $(".totalTime").html("");
-    $("#head-score").html("");
-    $(".inputBox").prop("disabled", true);
-    $(".inputBox").removeClass("showRowCol");
-
-    //Stop the timer
-    clearInterval(Interval);
-    let minutes = $("#minutes").text();
-    let seconds = $("#seconds").text();
-    let tens = $("#tens").text();
-    let content ="";
-    $(".btn-level").prop("disabled", false);
-
-    let result = checkAll();
-    localStorage.setItem(parseInt(localStorage.length+1), JSON.stringify(result));
-
-    let text = $("<p class='text-black'></p>")
-    if(result.status){
-        $("#head-score").append("Well done! <b>"+result.user+"</b> &#127881; &#127882;");
-        $(".head-result").addClass("alert alert-success");
-        content = "You have spent: <b>"+minutes+":"+seconds+":"+tens+"</b> <br/><br/> Your Score is: <b>"+result.score+"</b></p><p class='fst-italic alert alert-info'>"+result.message+" </p>";
-
-    } else {
-        $("#head-score").append("You didn't get it! <b>"+result.user+"</b> &#10060;")
-        $(".head-result").addClass("alert alert-danger");
-        content = "You have spent: <b>"+minutes+":"+seconds+":"+tens+"</b> <br/><br/> Your Score is: <b>"+result.score+"</b></p><p class='fst-italic alert alert-warning'>"+result.message+" </p>";
     }
     //Function for get the user name
     $("#btn-getUser").on("click", function() {
@@ -412,7 +309,7 @@ $(".validate").on("click", function(){
 
     /* Set the width of the side navigation to 385px */
     $("#btn-sideMenu").on("click", function () {
-        $("#mySidenav").css("width", "250px");
+        $("#mySidenav").css("width", "250");
     });
 
     /* Set the width of the side navigation to 0 */
@@ -576,6 +473,7 @@ $(".validate").on("click", function(){
                 }
             }
         }
+        // console.log(totalInputs)
         totalScore = (inputsTrue*100/totalInputs).toFixed(2);
 
         if(inputsTrue === 0 && count === 0){
@@ -615,7 +513,7 @@ $(".validate").on("click", function(){
                 break;
         }
     }
-    
+
     function checkVal (){
         $(".inputBox").removeClass("bg-warning");
         $(".inputBox").addClass("bg-light");
