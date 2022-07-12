@@ -139,6 +139,7 @@ $(document).ready(function (){
         minutes = "00";
         $("#tens").text(tens);
         $("#seconds").text(seconds);
+        $("#minutes").text(minutes);
         $("#dinoTimer").attr("src", "./assets/img/dinoTimerStatic.png");
 
     }
