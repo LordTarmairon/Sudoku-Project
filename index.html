@@ -7,22 +7,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/styles.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <title>Sudoku Project</title>
 </head>
 <body>
 <img id="dino" width="150px" src="./assets/img/dino.gif" alt="">
-
+<img id="dino-1" class="dinosaur-group d-none" width="200px" src="./assets/img/dino.gif" alt="">
+<img id="dino-2" class="dinosaur-group d-none" width="200px" src="./assets/img/dino.gif" alt="Dinosaur Gif">
+<img id="dino-3" class="dinosaur-group d-none" width="200px" src="./assets/img/dino.gif" alt="Dinosaur Gif">
+<img id="dino-4" class="dinosaur-group d-none" width="200px" src="./assets/img/dino.gif" alt="Dinosaur Gif">
+<img id="dino-5" class="dinosaur-group d-none" width="200px" src="./assets/img/dino.gif" alt="Dinosaur Gif">
+<img id="dino-6" class="dinosaur-group d-none" width="200px" src="./assets/img/dino.gif" alt="Dinosaur Gif">
+<img id="dino-7" class="dinosaur-group d-none" width="200px" src="./assets/img/dino.gif" alt="Dinosaur Gif">
+<img id="dino-8" class="dinosaur-group d-none" width="200px" src="./assets/img/dino4.gif" alt="Dinosaur Gif">
 <main>
     <button type="button"  id="btn-sideMenu" class="sideMenu"><em>Menu</em></button>
     <section class="tableMenu" id="mySidenav">
-        <a href="javascript:void(0)" id="btn-clssideMenu" class="closebtn" >&times;</a>
+        <!-- <a href="javascript:void(0)" id="btn-clssideMenu" class="closebtn" >&times;</a> -->
         <div class="sidenav">
-            <div class="topnav-username">Welcome <span class="get-username"></span></div>
+            <div class="topnav-username">Welcome
+                <a href="javascript:void(0)" id="btn-clssideMenu" class="closebtn" >&times;</a>
+                <span class="get-username"></span>
+            </div>
             <div class="wrapper">
-                <div style="width:100%;" class="text-center bg-warning bg-gradient">                    
-                    <h1 >Timer</h1><aside class="dino-move"></aside>
+                <div style="width:100%;" class=" text-center bg-warning bg-gradient">
+                    <h1 >Timer</h1>
+                    <aside class="dino-move"></aside>
                 </div>
                 <p>
+                    <img id="dinoTimer" data-playon="hover" width="100" src="./assets/img/dinoTimerStatic.png" alt="">
                     <span id="minutes">00</span>:<span id="seconds">00</span><span id="tens" hidden>00</span>
                 </p>
                 <div class="start-timer d-none">
@@ -49,11 +62,11 @@
             </div>
         </div>
     </section>
-    <section class="tableB">
+    <section class="tableB text-center">
         <div id="tableGame"></div>
-    </section>
+        <aside class="footer"><a target="_blank" href="https://github.com/LordTarmairon/Sudoku-Project"><img src="./assets/img/jurassic1.png"></a></aside>
+    </section> 
 </main>
-
 <!-- Modal For Validate Sudoku -->
 <div class="modal fade" id="checkSudoku" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -78,7 +91,7 @@
             <div class="modal-header alert alert-secondary">
                 <h5 class="modal-title">Username:</h5>
             </div>
-            <div class="modal-body m-auto w-75">
+            <div class="modal-body m-auto w-75 text-center">
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
                     <input type="text" name="username" id="username" class="form-control" placeholder="Enter your name here..." aria-label="Username" aria-describedby="basic-addon1" />
@@ -88,7 +101,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" id="btn-getUser" class="btn btn-secondary btn-lg m-auto">Save</button>
+                <button type="button" id="btn-getUser" class="btn btn-secondary btn-lg px-lg-5 m-auto">Save</button>
             </div>
         </div>
     </div>
@@ -151,4 +164,5 @@
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
 <script src="./assets/js/main.js"></script>
 </body>
+
 </html>
