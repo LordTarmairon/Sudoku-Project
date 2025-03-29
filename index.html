@@ -11,158 +11,168 @@
     <title>Sudoku Project</title>
 </head>
 <body>
-<img id="dino" width="150px" src="./assets/img/dino.gif" alt="">
-<img id="dino-1" class="dinosaur-group d-none" width="200px" src="./assets/img/dino.gif" alt="">
-<img id="dino-2" class="dinosaur-group d-none" width="200px" src="./assets/img/dino.gif" alt="Dinosaur Gif">
-<img id="dino-3" class="dinosaur-group d-none" width="200px" src="./assets/img/dino.gif" alt="Dinosaur Gif">
-<img id="dino-4" class="dinosaur-group d-none" width="200px" src="./assets/img/dino.gif" alt="Dinosaur Gif">
-<img id="dino-5" class="dinosaur-group d-none" width="200px" src="./assets/img/dino.gif" alt="Dinosaur Gif">
-<img id="dino-6" class="dinosaur-group d-none" width="200px" src="./assets/img/dino.gif" alt="Dinosaur Gif">
-<img id="dino-7" class="dinosaur-group d-none" width="200px" src="./assets/img/dino.gif" alt="Dinosaur Gif">
-<img id="dino-8" class="dinosaur-group d-none" width="200px" src="./assets/img/dino4.gif" alt="Dinosaur Gif">
-<main>
-    <button type="button"  id="btn-sideMenu" class="sideMenu"><em>Menu</em></button>
-    <section class="tableMenu" id="mySidenav">
-        <!-- <a href="javascript:void(0)" id="btn-clssideMenu" class="closebtn" >&times;</a> -->
-        <div class="sidenav">
-            <div class="topnav-username">Welcome
-                <a href="javascript:void(0)" id="btn-clssideMenu" class="closebtn" >&times;</a>
-                <span class="get-username"></span>
+
+    <div id="loading">
+        <h1>Loading ...</h1>
+        <img class="" alt="Dinosaur walking for loading screen" width="200px" src="./assets/img/dino.gif" alt="">
+    </div>
+
+    <div class="dino-pict">
+        <img id="dino" width="150px" src="./assets/img/dino.gif" alt="">
+        <img id="dino-1" class="dinosaur-group d-none" width="200px" src="./assets/img/dino.gif" alt="">
+        <img id="dino-2" class="dinosaur-group d-none" width="200px" src="./assets/img/dino.gif" alt="Dinosaur Gif">
+        <img id="dino-3" class="dinosaur-group d-none" width="200px" src="./assets/img/dino.gif" alt="Dinosaur Gif">
+        <img id="dino-4" class="dinosaur-group d-none" width="200px" src="./assets/img/dino.gif" alt="Dinosaur Gif">
+        <img id="dino-5" class="dinosaur-group d-none" width="200px" src="./assets/img/dino.gif" alt="Dinosaur Gif">
+        <img id="dino-6" class="dinosaur-group d-none" width="200px" src="./assets/img/dino.gif" alt="Dinosaur Gif">
+        <img id="dino-7" class="dinosaur-group d-none" width="200px" src="./assets/img/dino.gif" alt="Dinosaur Gif">
+        <img id="dino-8" class="dinosaur-group d-none" width="200px" src="./assets/img/dino4.gif" alt="Dinosaur Gif">
+    </div>
+
+    <main>
+        <button type="button"  id="btn-sideMenu" class="sideMenu"><em>Menu</em></button>
+        <section class="tableMenu" id="mySidenav">
+            <!-- <a href="javascript:void(0)" id="btn-clssideMenu" class="closebtn" >&times;</a> -->
+            <div class="sidenav">
+                <div class="topnav-username">Welcome
+                    <a href="javascript:void(0)" id="btn-clssideMenu" class="closebtn" >&times;</a>
+                    <span class="get-username"></span>
+                </div>
+                <div class="wrapper">
+                    <div style="width:100%;" class=" text-center bg-warning bg-gradient">
+                        <h1 >Timer</h1>
+                        <aside class="dino-move"></aside>
+                    </div>
+                    <p>
+                        <img id="dinoTimer" data-playon="hover" width="100" src="./assets/img/dinoTimerStatic.png" alt="">
+                        <span id="minutes">00</span>:<span id="seconds">00</span><span id="tens" hidden>00</span>
+                    </p>
+                    <div class="start-timer d-none">
+                        <button id="button-start">Start</button>
+                        <button id="button-stop">Stop</button>
+                        <button id="button-reset">Reset</button>
+                    </div>
+                </div>
+                <!-- Level Difficulty Button -->
+                <div class="container">
+                    <div class="container mt-3">
+                        <button type="button" class="btn-level shadow btn btn-primary text-white bg-gradient rounded" data-bs-toggle="modal" data-bs-target="#myModal">
+                            <i class="fa fa-puzzle-piece"></i>
+                            Levels
+                        </button>
+                    </div>
+                    <div class="checkbtn d-flex flex-column align-items-stretch">
+                        <button class="onGame validate btn btn-success" title="Validate actual Sudoku">Validate <i class="fa fa-braille"></i></button>
+                        <br />
+                        <button class="onGame new btn btn-primary" title="Makes the Sudoku table empty for a new Game">New <i class="fa fa-gamepad"></i></button>
+                        <button class="onGame reset btn btn-warning" title="Reset actual Sudoku">Reset <i class="fa fa-refresh"></i></button>
+                        <button class="onGame solve btn btn-danger" title="Show the Sudokus's solution (NO SCORE)">Solve <i class="	fa fa-magic"></i></button>
+                        <br />
+                        <button class="onGame scores btn btn-light" title="Show the Scores table">View Scores <i class="fa fa-eye"></i></button>
+                    </div>
+                </div>
             </div>
-            <div class="wrapper">
-                <div style="width:100%;" class=" text-center bg-warning bg-gradient">
-                    <h1 >Timer</h1>
-                    <aside class="dino-move"></aside>
+        </section>
+        <section class="tableB text-center">
+            <div id="tableGame"></div>
+            <aside class="footer"><a target="_blank" href="https://github.com/LordTarmairon/Sudoku-Project"><img src="./assets/img/jurassic1.png"></a></aside>
+        </section> 
+    </main>
+    <!-- Modal For Validate Sudoku -->
+    <div class="modal fade" id="checkSudoku" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header head-result">
+                    <h5 class="modal-title" id="head-score"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <p>
-                    <img id="dinoTimer" data-playon="hover" width="100" src="./assets/img/dinoTimerStatic.png" alt="">
-                    <span id="minutes">00</span>:<span id="seconds">00</span><span id="tens" hidden>00</span>
-                </p>
-                <div class="start-timer d-none">
-                    <button id="button-start">Start</button>
-                    <button id="button-stop">Stop</button>
-                    <button id="button-reset">Reset</button>
+                <div class="modal-body body-result">
+                    <div class="totalTime"></div>
                 </div>
-            </div>
-            <!-- Level Difficulty Button -->
-            <div class="container">
-                <div class="container mt-3">
-                    <button type="button" class="btn-level shadow btn btn-primary text-white bg-gradient rounded" data-bs-toggle="modal" data-bs-target="#myModal">
-                        <i class="fa fa-puzzle-piece"></i>
-                        Levels
-                    </button>
-                </div>
-                <div class="checkbtn d-flex flex-column align-items-stretch">
-                    <button class="onGame new btn btn-success">New <i class="fa fa-gamepad"></i></button>
-                    <button class="onGame validate btn btn-primary">Validate <i class="fa fa-braille"></i></button>
-                    <button class="onGame reset btn btn-warning">Reset <i class="fa fa-refresh"></i></button>
-                    <button class="onGame solve btn btn-info">Solve <i class="	fa fa-magic"></i></button>
-                    <button class="onGame scores btn btn-light">View Scores <i class="fa fa-eye"></i></button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info m-auto" data-bs-dismiss="modal">Close this window</button>
                 </div>
             </div>
         </div>
-    </section>
-    <section class="tableB text-center">
-        <div id="tableGame"></div>
-        <aside class="footer"><a target="_blank" href="https://github.com/LordTarmairon/Sudoku-Project"><img src="./assets/img/jurassic1.png"></a></aside>
-    </section> 
-</main>
-<!-- Modal For Validate Sudoku -->
-<div class="modal fade" id="checkSudoku" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-header head-result">
-                <h5 class="modal-title" id="head-score"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body body-result">
-                <div class="totalTime"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-info m-auto" data-bs-dismiss="modal">Close this window</button>
+    </div>
+    <!-- Modal For Get UserName -->
+    <div class="modal fade" id="userNameModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header alert alert-secondary">
+                    <h5 class="modal-title">Username:</h5>
+                </div>
+                <div class="modal-body m-auto w-75 text-center">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                        <input type="text" name="username" id="username" class="form-control" placeholder="Enter your name here..." aria-label="Username" aria-describedby="basic-addon1" />
+                    </div>
+                    <div class="alert-username alert alert-danger text-center" role="alert">
+                        <span class="alert-danger">Username is required</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn-getUser" class="btn btn-secondary btn-lg px-lg-5 m-auto">Save</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Modal For Get UserName -->
-<div class="modal fade" id="userNameModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header alert alert-secondary">
-                <h5 class="modal-title">Username:</h5>
-            </div>
-            <div class="modal-body m-auto w-75 text-center">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
-                    <input type="text" name="username" id="username" class="form-control" placeholder="Enter your name here..." aria-label="Username" aria-describedby="basic-addon1" />
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header alert alert-info">
+                    <h4 class="modal-title">Difficulty Levels <i class="fa fa-gamepad"></i></h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="alert-username alert alert-danger text-center" role="alert">
-                    <span class="alert-danger">Username is required</span>
+
+                <!-- Modal body -->
+                <div class="modal-body text-center">
+                    <div class="col-md-12">
+                        <button type="button" class="btn level btn-danger col-md-5 p-2 mb-3" id="btn-easy" data-bs-dismiss="modal"> <i class="fa fa-star-half-empty"></i> Easy <i class="fa fa-star-half-empty"></i></button> <br>
+                        <button type="button" class="btn level btn-danger col-md-5 p-2 mb-3" id="btn-medium" data-bs-dismiss="modal"><i class="fa fa-star"></i> Medium <i class="fa fa-star"></i></button> <br>
+                        <button type="button" class="btn level btn-danger col-md-5 p-2" id="btn-hard" data-bs-dismiss="modal"><i class="fa fa-star"></i><i class="fa fa-star"></i> Hard <i class="fa fa-star"></i><i class="fa fa-star"></i></button>
+                    </div>
+
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" id="btn-getUser" class="btn btn-secondary btn-lg px-lg-5 m-auto">Save</button>
+            </div> <!-- End of modal-content -->
+
+        </div>
+    </div>
+
+    <!--MODAL BOX FOR SCORE LIST -->
+    <div class="modal" id="modal-scores" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Scores List</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-hover table-striped table-responsive">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Score</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Level</th>
+                        </tr>
+                        </thead>
+                        <tbody class="list-scores">
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- The Modal -->
-<div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header alert alert-info">
-                <h4 class="modal-title">Difficulty Levels <i class="fa fa-gamepad"></i></h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body text-center">
-                <div class="col-md-12">
-                    <button type="button" class="btn level btn-danger col-md-5 p-2 mb-3" id="btn-easy" data-bs-dismiss="modal"> <i class="fa fa-star-half-empty"></i> Easy <i class="fa fa-star-half-empty"></i></button> <br>
-                    <button type="button" class="btn level btn-danger col-md-5 p-2 mb-3" id="btn-medium" data-bs-dismiss="modal"><i class="fa fa-star"></i> Medium <i class="fa fa-star"></i></button> <br>
-                    <button type="button" class="btn level btn-danger col-md-5 p-2" id="btn-hard" data-bs-dismiss="modal"><i class="fa fa-star"></i><i class="fa fa-star"></i> Hard <i class="fa fa-star"></i><i class="fa fa-star"></i></button>
-                </div>
-
-            </div>
-        </div> <!-- End of modal-content -->
-
-    </div>
-</div>
-
-<!--MODAL BOX FOR SCORE LIST -->
-<div class="modal" id="modal-scores" tabindex="-1">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Scores List</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <table class="table table-hover table-striped table-responsive">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Score</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Level</th>
-                    </tr>
-                    </thead>
-                    <tbody class="list-scores">
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- SCRIPTS JS and JQUERY -->
-<script src="./assets/js/jquery-3.6.0.min.js"></script>
-<script src="./assets/js/bootstrap.bundle.min.js"></script>
-<script src="./assets/js/main.js"></script>
+    <!-- SCRIPTS JS and JQUERY -->
+    <script src="./assets/js/jquery-3.6.0.min.js"></script>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/main.js"></script>
 </body>
-
 </html>

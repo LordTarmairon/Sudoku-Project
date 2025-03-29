@@ -2,6 +2,9 @@
 $(".onGame").hide();
 $(".onGame").prop("disabled", true);
 
+const PREGAME = {"board":[[0,0,0,0,0,0,0,0,0],[0,0,0,2,0,0,0,0,0],[0,7,0,3,0,0,1,0,0],[0,1,0,4,0,0,7,8,9],[4,5,6,0,9,0,0,1,3],[0,9,0,1,2,0,0,0,0],[3,0,0,0,8,0,9,0,5],[6,0,1,9,0,5,8,7,0],[0,0,5,0,4,0,6,0,0]]}
+const PREGAMESOLUTION = [[1,3,2,5,7,8,4,9,6],[8,6,4,2,1,9,3,5,7],[5,7,9,3,6,4,1,2,8],[2,1,3,4,5,6,7,8,9],[4,5,6,8,9,7,2,1,3],[7,9,8,1,2,3,5,6,4],[3,2,7,6,8,1,9,4,5],[6,4,1,9,3,5,8,7,2],[9,8,5,7,4,2,6,3,1]]
+
 const inputArray = [];
 var solved = [];
 var minutes = 0;
@@ -10,7 +13,7 @@ var tens = 0;
 var Interval;
 var level = "";
 var name = "";
-var numbersArray = [];
+var numbersArray = {};
 var totalInputs = 81;
 
 function createBox() {
@@ -72,13 +75,14 @@ $(document).ready(function (){
     $(".alert-username").hide();
     $("#userNameModal").modal("show");
     $("#username").focus();
+    screenLock();
 
 
     function cleanInputArray(){
         $(".inputBox").removeClass("bg-secondary");
         $(".inputBox").removeClass("input-default");
     }
-    //Function for get the user name
+    //Function to get the user name
     $("#btn-getUser").on("click", function() {
         getUserName();
     });
@@ -121,7 +125,7 @@ $(document).ready(function (){
         restartTimer();
     });
 
-    //This function check if the input has a number or an other character
+    //This function check if the input has a number or another character
     $(".inputBox").on("change", function(){
         if(isNaN($(this).val()) || $(this).val() == 0){
             $(this).val("");
@@ -131,7 +135,7 @@ $(document).ready(function (){
         }
     });
 
-//This function restore the timer to 00:00
+    //This function restore the timer to 00:00
     function restartTimer(){
         clearInterval(Interval);
         tens = "00";
@@ -174,8 +178,8 @@ $(document).ready(function (){
         }
     }
 
-// FP-12-solve-button
-//This function will validate the sudoku table and take the time.
+    // FP-12-solve-button
+    //This function will validate the sudoku table and take the time.
     $(".validate").on("click", function(){
         $(this).prop("disabled", true);
         $(".totalTime").html("");
@@ -217,9 +221,9 @@ $(document).ready(function (){
     });
 
 
-//FP-16-fill-game-board
-//When the buttons with the class level are clicked we get the level send to the api and get the numbers
-//then print the numbers insede the boxes and get the solution
+    //FP-16-fill-game-board
+    //When the buttons with the class level are clicked we get the level send to the api and get the numbers
+    //then print the numbers insede the boxes and get the solution
     $(".level").on("click", function (){
         //Clean array
         cleanInputArray();
@@ -241,31 +245,60 @@ $(document).ready(function (){
             left:"-11%"});
         $("#dino").animate({
             opacity: "100"});
+
+
         //Ajax information
         $.ajax({
-            url: "https://sugoku.herokuapp.com/board?difficulty="+level,
+            url: "https://sugoku.onrender.com/board?difficulty=" + level,
             method: "GET",
             crossDomain: true,
             dataType: 'json',
-            success:function (result){
-                $(".btn-level").prop("disabled", true);
-                numbersArray = result.board;
-                showNumbers(result.board);
-                $(".onGame").prop("disabled", false);
-                $(".onGame").fadeIn();
+    
+            // Cuando inicia la petición
+            beforeSend: function () {
+                screenLock(); // Mostrar loading
+            },
+    
+            success: function (result) {
+                numbersArray = result;
 
-                //Start Timer
                 initTimer();
-                result = {board: JSON.stringify(result.board)}
-                $.post('https://sugoku.herokuapp.com/solve', result)
+                $.post('https://sugoku.onrender.com/solve', { board: JSON.stringify(result.board) })
                     .done(function (response) {
                         solved = response.solution;
-                    });
+                    })
+                    .fail(function () {
+                        showError("The sudoku could not be solved, so the 'Solve' option will not be available.");
+                        $(".solve").prop("disabled", true).fadeOut();
+                    })
+            },
+    
+            // Error getting the sudoku board
+            error: function (xhr, status, error) {
+                showError("There was an error generating the sudoku, so a predefined sudoku will be displayed: " + error);
+                numbersArray = PREGAME;
+                solved = PREGAMESOLUTION
+            },
+    
+            complete: function () {
+                $(".btn-level").prop("disabled", true);
+                $(".onGame").prop("disabled", false).fadeIn();
+                screenLock(); // Ocultar loading
+                showNumbers(numbersArray.board);
             }
         });
+
     });
 
-//This function print the numbers inside the boxes
+    function screenLock() {
+        $("#loading").toggle(); 
+    }
+
+    function showError(mensaje) {
+        alert(mensaje);
+    }
+
+    //This function print the numbers inside the boxes
     function showNumbers(numbers, solved = false){
         totalInputs = 81;
         //Clean the showRolCol Styles
@@ -348,7 +381,7 @@ $(document).ready(function (){
     $(".reset").on("click", function() {
         $(".inputBox").removeClass("bg-warning");
         $(".validate").prop("disabled", false);
-        showNumbers(numbersArray);
+        showNumbers(numbersArray.board);
         restartTimer();
         initTimer();
     });
