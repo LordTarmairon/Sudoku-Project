@@ -1,124 +1,153 @@
-
 body {
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
-main{
+
+main {
     display: flex;
     width: 100%;
     height: 100vh;
 }
+
 div {
-    overflow: hidden;
     box-sizing: border-box;
 }
-#dino{
+
+#dino {
     position: absolute;
     z-index: 5;
     top: 9.5%;
     left: -11%;
+    overflow: hidden;
+
 }
-#dino-roar{
+
+#dino-roar {
     width: 15vh;
     height: 15vh;
 }
-h1{
-    background: -webkit-linear-gradient(rgb(248, 248, 248), rgb(39, 131, 39));
+
+h1 {
+    background-color:darkcyan;
+    font-weight: 900;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 input {
     text-align: center;
 }
+
 /* Countdown Timer */
-#seconds,#tens,.wrapper>p{
+#seconds,
+#tens,
+.wrapper > p {
     font-size: 50px;
+    color: white;
+    margin-bottom: unset;
+    font-weight: 600;
 }
-#btn-easy{
+
+#btn-easy {
     background-color: #02b875;
 }
-#btn-medium{
+
+#btn-medium {
     background-color: #fdce2a;
 }
-#btn-hard{
+
+#btn-hard {
     background-color: orangered;
 }
-#btn-easy,#btn-medium,#btn-hard{
+
+#btn-easy,
+#btn-medium,
+#btn-hard {
     border: 1px solid #e7d7be;
 }
-.wrapper{
+
+.wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
+    row-gap: 6px;
 }
-#start-timer{
+
+#start-timer {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
-#button-start{
-    background-color:greenyellow;
-}
-#button-start:hover{
-    background-color: rgb(148, 247, 0);
-}
-#button-stop{
-    background-color: darkorange;
-}
-#button-start,#button-stop, #button-reset{
-    width: 60px;
-    font-weight: bold;
-}
-#button-stop:hover{
-    background-color:rgb(255, 115, 0);
-}
-#button-reset{
-    background-color:green;
-}
 
-#button-reset:hover {
-    background-color: rgb(1, 77, 1);
-
-}
-.topnav-username{
+.topnav-username {
     text-align: center;
 }
-.topnav-username,.get-username{
+
+.topnav-username,
+.get-username {
+    color: #f1f1f1;
+    font-size: 30px;
+    font-weight: bold;
+    font-style: italic;
+    word-wrap: break-word;
+    padding-bottom: 14vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.topnav-username {
+    text-align: center;
+}
+
+.topnav-username,
+.get-username {
     height: 6vh;
     color: #f1f1f1;
     font-size: 30px;
     font-weight: bold;
     font-style: italic;
-    margin-bottom: 5%;
 }
-.container{
+
+.container {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.btn-level{
-    padding: 8% 15%;
+
+.btn-level {
+    padding: 5% 10%;
     font-size: 30px;
     font-weight: bold;
     border-radius: 50%;
     border: none;
 }
-.checkbtn{
+
+.checkbtn {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     padding: 10%;
 }
-.onGame{
+
+.onGame {
     margin-bottom: 10px;
 }
-#button-start,#button-stop,#button-reset{
+
+#button-start,
+#button-stop,
+#button-reset {
     border: transparent;
     border-radius: 10%;
     padding: 5%;
 }
+
 .tableMenu {
     width: 25%;
     height: 100vh;
@@ -126,15 +155,16 @@ input {
     z-index: 2;
     position: fixed;
 }
-.tableB{
+
+.tableB {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding:2%;
-    flex-direction: column;
+    padding: 2%;
+    /* flex-direction: column; */
     row-gap: 10px;
-    background-image: url('../img/jurassic.jpg');
+    background-image: url('../img/jurassic2.jpeg');
     background-position: inherit;
     background-repeat: no-repeat;
     background-size: cover;
@@ -152,12 +182,13 @@ input {
     flex-direction: column;
 }
 
-.restbtns{
+.restbtns {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.checkbtn{
+
+.checkbtn {
     display: flex;
     align-items: center;
 
@@ -166,12 +197,12 @@ input {
 
 /* Alyce Styles for GameTable */
 .outsideDiv {
+    border-radius: 5px;
     padding: 1%;
     width: 90vh;
-    height: 100vh;
+    height: 90vh;
     background-color: rgb(186, 146, 95);
-    opacity: 90%;
-    box-shadow: 10px 10px 10px rgba(204, 198, 169, 0.8);
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.69);
     /* margin-left: 50px; */
     display: flex;
     flex-wrap: wrap;
@@ -189,26 +220,36 @@ input {
     width: 30%;
     height: 30%;
 }
+
 input {
     color: black;
 }
 
 /* The side navigation menu */
-.sideMenu{
+.sideMenu {
     background-color: #4f4f4f;
     color: white;
+    width: 5%;
+    border: none;
 }
+
 a {
     z-index: 2;
 }
+
 #mySidenav {
     height: 100%;
-    position: fixed; /* Stay in place */
-    z-index: 2; /* Stay on top */
+    position: fixed;
+    /* Stay in place */
+    z-index: 2;
+    /* Stay on top */
     background-color: #4f4f4f;
-    overflow-x: hidden; /* horizontal scroll disabled*/
-    padding-top: 40px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    overflow-x: hidden;
+    /* horizontal scroll disabled*/
+    /* padding-top: 40px; */
+    /* Place content 60px from the top */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidenav */
 }
 
 /* The navigation menu links */
@@ -232,6 +273,7 @@ a {
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+    /* margin-top: -5vh; */
 }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
@@ -245,9 +287,122 @@ a {
     background-color: cornsilk !important;
 }
 
+
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-    #mySidenav {padding-top: 15px;}
-    #mySidenav a {font-size: 18px;}
-  }
+    #mySidenav {
+        padding-top: 15px;
+    }
 
+    #mySidenav a {
+        font-size: 18px;
+    }
+}
+.footer{
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: flex-end;
+    width: 10vh;
+    height: 10vh;
+    background-color: transparent;
+    border: none;
+}
+.footer a{
+    position: absolute;
+    width: 100%;
+    background-color: transparent;
+    height: 100%;
+    border: none;
+}
+
+.topnav-username{
+    text-decoration: none;
+}
+.footer img {
+    position: absolute;
+    z-index: 1;
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 10vh;
+    border: none !important;
+}
+.dinosaur-group{
+    position: absolute;
+    z-index: 5;
+    top: 9.5%;
+    overflow: hidden;
+}
+.dinosaur-group .group img:last-child {
+    display: block;
+}
+.dinosaur-group {
+    position: absolute;
+    z-index: 5;
+    top: 10.5%;
+    overflow: hidden;
+    transform: scaleX(-1);
+}
+
+#dino-1{
+    top: 0;
+    right: -21%;
+}
+
+#dino-2{
+    top: 15%;
+    right: -24%;
+}
+
+#dino-3{
+    top: 25%;
+    right: -18%;
+}
+
+#dino-4{
+    top: 40%;
+    right: -20%;
+}
+#dino-5{
+    top: 55%;
+    right: -21%;
+}
+#dino-6{
+    top: 75%;
+    right: -18%;
+}
+#dino-7{
+    right: -25%;
+}
+#dino-8{
+    top: 40%;
+    right: -25%;
+}
+
+#loading { 
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#loading h1 { 
+    color: white;
+    margin-bottom: 20px; /* Separación entre texto e imagen */
+    background: linear-gradient(135deg, #a8e063, #56ab2f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#loading img {
+    width: 200px;
+}
